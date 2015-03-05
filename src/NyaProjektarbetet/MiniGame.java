@@ -140,7 +140,9 @@ public class MiniGame extends Room implements ActionListener,MouseListener{
 		{
 			Sound.playSomeSound("Randomize8.wav");
 			text.setFont(new Font("Serif", Font.BOLD + Font.ITALIC, 21));
-			text.setText("  Spelinstruktioner:\n  Klicka på mullvaderna som visar rätt svar till matteproblemet\n  för att vinna pengar. \n  Rätt svar ger 10 kr och fel svar ger -2 kr. \n  Vinner man inget alls tas inga pengar bort.");
+			text.setText("  Spelinstruktioner:\n  Klicka på mullvaderna som visar rätt svar till matteproblemet\n  för att vinna pengar. " + ""
+					+ "Rätt svar ger 10 kr och fel svar ger -2 kr. \n  Vinner du inget tas inga pengar bort. " + 
+					"Om du får 100 poäng i sträck\n levlar du upp.");
 		    text.setEditable(false);
 		}
 		else if (e.getSource() == replay)
