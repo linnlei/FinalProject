@@ -29,7 +29,7 @@ public class Garden extends Room implements Serializable{
 	/**
 	* getGardenItems - gets all the pictures and their places in garden .
 	*
-	* @return  	a hasmap where strings representing pictures are saved whit specific numbers of the buttons where they are saved. 
+	* @return  	A hashmap where picture filenames are saved with the index of the buttons where they are saved. 
 	*       
 	*/	
 	public HashMap<Integer, String> getGardenItems(){
@@ -75,7 +75,7 @@ public class Garden extends Room implements Serializable{
 	/**
 	* getPicture - gets the background picture of the room
 	*
-	* @param  	current		the string representation of the room type
+	* @param  	current		the name of the room type
 	* @return				the filename of the background picture		              
 	*/
 	public String getPicture(String current)

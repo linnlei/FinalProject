@@ -16,11 +16,10 @@ import java.util.Observer;
 
 import javax.swing.*;
 
-
 //Ang. Authors så tror jag att det är Fifi och jag som arbetat mest på den här klassen? Eller? Vad tror ni?
 //Det är väl Fifi som gjort största delen av Start game-metoderna, samt fixat till JPanelWithBackground-funktionerna
-//Och jag har jobbat mest med menyerna
-//Eller ska vi skriva alla fyra som authors istället? //Linn
+//Och jag har jobbat mest med menyerna och layouten
+//Eller ska vi skriva alla fyra som authors istället? :) //Linn
 
 /**
  * This class creates the base GUI, everything but the central panel.
@@ -52,10 +51,19 @@ public class UserInterface implements Observer{
         
     }
     
+	/**
+	* myFrame - Gets the main window where the GUI is located.
+	*
+	* @return				The main window.	              
+	*/
     public JFrame myFrame() {
     	return myFrame;
     }
     
+	/**
+	* gameStart - Starts the game by creating the main window and scaling it to
+	* the user screensize, and showing the start screen.	              
+	*/
     public void gameStart() {
     	myFrame = new JFrame("spel");
 		background = new JPanelWithBackground("pictures/startbackground.jpg");
@@ -72,7 +80,6 @@ public class UserInterface implements Observer{
         myFrame.setResizable(false);
         myFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
-        createMenu();
 		
 		JButton startButton = new JButton ("Starta spel");
         startButton.setBounds((int)(width*0.34), (int)(height*0.72), 400, 80);
@@ -101,7 +108,27 @@ public class UserInterface implements Observer{
         myFrame.pack();
         myFrame.setVisible(true);
     }
+    
+	/**
+	* createGUI - Creates the game GUI by calling appropriate methods to add
+	* the different components of the GUI.
+	*	              
+	*/
+	 public void createGUI() {
+		 
+		 createMenu();
+		 image ="pictures/startbackground.jpg";
+		 panel = new JPanelWithBackground(image); 
+		 addBorderLayout(/*panel, */engine.getCurrent());
+	   	               	        
+		 myFrame.pack();     
+	    
+	}
 	
+	/**
+	* createMenu - Creates the menu at the top of the window.
+	*             
+	*/
 	public void createMenu() {
     	//GUI'n skapas
         JMenuBar menuBar;
@@ -174,50 +201,6 @@ public class UserInterface implements Observer{
         });
         
         menu.add(menuItem);
-
-
-        //Fler menydelar vi kanske kan vilja använda till något
-        /*
-        JMenu submenu;
-        JRadioButtonMenuItem rbMenuItem;
-        JCheckBoxMenuItem cbMenuItem;
-        
-        menu.addSeparator();
-        ButtonGroup group = new ButtonGroup();
-        rbMenuItem = new JRadioButtonMenuItem("A radio button menu item");
-        rbMenuItem.setSelected(true);
-        rbMenuItem.setMnemonic(KeyEvent.VK_R);
-        group.add(rbMenuItem);
-        menu.add(rbMenuItem);
-
-        rbMenuItem = new JRadioButtonMenuItem("Another one");
-        rbMenuItem.setMnemonic(KeyEvent.VK_O);
-        group.add(rbMenuItem);
-        menu.add(rbMenuItem);
-
-        //Checkboxar
-        menu.addSeparator();
-        cbMenuItem = new JCheckBoxMenuItem("A check box menu item");
-        cbMenuItem.setMnemonic(KeyEvent.VK_C);
-        menu.add(cbMenuItem);
-
-        cbMenuItem = new JCheckBoxMenuItem("Another one");
-        cbMenuItem.setMnemonic(KeyEvent.VK_H);
-        menu.add(cbMenuItem);
-
-        //Undermeny
-        menu.addSeparator();
-        submenu = new JMenu("A submenu");
-        submenu.setMnemonic(KeyEvent.VK_S);
-
-        menuItem = new JMenuItem("An item in the submenu");
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_2, ActionEvent.ALT_MASK));
-        submenu.add(menuItem);
-
-        menuItem = new JMenuItem("Another item");
-        submenu.add(menuItem);
-        menu.add(submenu);*/
 
         //En andra meny i menyn
         menu = new JMenu("Inställningar");
@@ -301,126 +284,126 @@ public class UserInterface implements Observer{
         myFrame.pack();
 	}
 	
-	 public void createGUI() {
-		 	
-		
-	        image ="pictures/startbackground.jpg";
-	        
-	        panel = new JPanelWithBackground(image); 
-	        addBorderLayout(panel, engine.getCurrent());
-	       	               	        
-	        myFrame.pack();
-	              
-	        
-	    }
+
 	 
-	 //***************************Spelmenyn med pengar, föremål etc*****************************
-	 private void addBorderLayout(JPanel pa, String current)
-	 {
-		 	engine.getPlayer().addObserver(this);
+	/**
+	* addBorderLayout - Creates the layout of the window: the money label, the
+	* inventory button, the info button, and an exit button.
+	*
+	* @param  	current		The name of the current room type.             
+	*/
+	private void addBorderLayout(/*JPanel pa,*/ String current)
+	{
+		engine.getPlayer().addObserver(this);
 		 	
-		 	String nextRoom = "Centrum";
-		 	if("center".equals(current)){ nextRoom = "Affär";}
-		 	final String c = current;
+		String nextRoom = "Centrum";
+	 	if("center".equals(current)){ nextRoom = "Affär";}
+	 	final String c = current;
 		 			 	
-		 	exitButton = new JButton("Avsluta");
-	        JButton button2 = new JButton(nextRoom);
-	        JButton infoButton = new JButton("Info");
-	        JButton itemButton = new JButton("Föremål");
-	        moneyButton = new JLabel("     Pengar: " + engine.getPlayer().getMoney() + " kr     ");
+	 	exitButton = new JButton("Avsluta");
+        JButton button2 = new JButton(nextRoom);
+        JButton infoButton = new JButton("Info");
+        JButton itemButton = new JButton("Föremål");
+        moneyButton = new JLabel("     Pengar: " + engine.getPlayer().getMoney() + " kr     ");
+        
+                
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth();
+        double height = screenSize.getHeight();
+        
 	        
-	                
-	        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	        double width = screenSize.getWidth();
-	        double height = screenSize.getHeight();
-	        
-	        
-	        JPanel p = new JPanel(new GridLayout(4,1));
-	        JPanel p2 = new JPanel(new GridLayout(4,1));
-	        JPanel b = new JPanel();
-	        b.setLayout(new BoxLayout(b, BoxLayout.X_AXIS));
+        JPanel p = new JPanel(new GridLayout(4,1));
+        JPanel p2 = new JPanel(new GridLayout(4,1));
+        JPanel b = new JPanel();
+        b.setLayout(new BoxLayout(b, BoxLayout.X_AXIS));
 
-	        b.add(moneyButton);
-	        b.add(itemButton);
-	        b.add(button2);
-	        b.add(infoButton);
+        b.add(moneyButton);
+        b.add(itemButton);
+        b.add(button2);
+        b.add(infoButton);
 	        
-	        panel.setLayout(new BorderLayout());
-	        panel.add(p, BorderLayout.WEST);
-	        panel.add(p2, BorderLayout.EAST);
-	        panel.add(b, BorderLayout.NORTH);
-	       
-	        panel.setPreferredSize(new Dimension((int)width, (int)height)); //bildstorlek, gör om till att skala
-	        panel.setMinimumSize(new Dimension((int)width, (int)height)); //istället för att skära av
+        panel.setLayout(new BorderLayout());
+        panel.add(p, BorderLayout.WEST);
+        panel.add(p2, BorderLayout.EAST);
+        panel.add(b, BorderLayout.NORTH);
+       
+        panel.setPreferredSize(new Dimension((int)width, (int)height)); //bildstorlek, gör om till att skala
+        panel.setMinimumSize(new Dimension((int)width, (int)height)); //istället för att skära av
+        
+        myFrame.getContentPane().add(panel, BorderLayout.NORTH);
 	        
-	        myFrame.getContentPane().add(panel, BorderLayout.NORTH);
 	        
-	        
-	       button2.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					if("center".equals(c)){
-						engine.changeRoom("shop");				//flyttat till engine
-					}
-					else 
-						engine.changeRoom("center");				//flyttat till engine
+       button2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if("center".equals(c)){
+					engine.changeRoom("shop");				//flyttat till engine
 				}
-			});
-	       	
-	        exitButton.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent event) {
-	            	System.exit(0);
-	            }
-	        });
-	        
-	        infoButton.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent event) {
-	            	
-	            	String name = "Ditt spelarnamn är: " + engine.getPlayer().getUserName() + "\n";
-	            	String level = "Du är level: " + engine.getPlayer().getLevel() + "\n";
-	            	
-	            	if(engine.getCurrent().equals("center") )
-	            		JOptionPane.showMessageDialog(null, name + level + "Du är i centrum.", "Info", JOptionPane.INFORMATION_MESSAGE);
-	            	else if(engine.getCurrent().equals("shop") )
-	            		JOptionPane.showMessageDialog(null, name + level + "Du är i affären.", "Info", JOptionPane.INFORMATION_MESSAGE);
-	            	else if(engine.getCurrent().equals("garden") )
-	            		JOptionPane.showMessageDialog(null, name + level + "Du är på din tomt.", "Info", JOptionPane.INFORMATION_MESSAGE);
-	            }
-	        });
-	        
-	        itemButton.addActionListener(new ActionListener() {
-	            @Override
-	            public void actionPerformed(ActionEvent event) {
-	            	invisPanels.createInventoryPanel();
-	            }
-	        });
-	        
-	 }
-	 
-	 public void setJPanelWithBackground(String i)
-	 {
-		  myFrame.remove(panel);
-		  panel = new JPanelWithBackground(i);
-		  panel.setLayout(new BorderLayout());
-		  addBorderLayout(panel, engine.getCurrent());
-		  panel.add(invisPanels.getPanel(engine.getCurrent()), BorderLayout.CENTER); //room.getRoomPanel("Shop"/*engine.getCurrent()*/));
-		  myFrame.add(panel);			
-		  myFrame.pack();
-	 }
-	 
-
-	 public void update(Observable obj, Object arg)
-		{
-			if(obj instanceof Player && arg instanceof Integer){
-				moneyButton.setText("     Pengar: " + arg + " kr     ");
-				
+				else 
+					engine.changeRoom("center");				//flyttat till engine
 			}
-			
-			
-				
-		}
+		});
+	       	
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+            	System.exit(0);
+            }
+        });
+	        
+        infoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+            	
+            	String name = "Ditt spelarnamn är: " + engine.getPlayer().getUserName() + "\n";
+            	String level = "Du är level: " + engine.getPlayer().getLevel() + "\n";
+            	
+            	if(engine.getCurrent().equals("center") )
+            		JOptionPane.showMessageDialog(null, name + level + "Du är i centrum.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            	else if(engine.getCurrent().equals("shop") )
+            		JOptionPane.showMessageDialog(null, name + level + "Du är i affären.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            	else if(engine.getCurrent().equals("garden") )
+            		JOptionPane.showMessageDialog(null, name + level + "Du är på din tomt.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+        
+        itemButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+            	invisPanels.createInventoryPanel();
+            }
+        });
+	        
+	}
+	
+	/**
+	 * setJPanelWithBackground - sets the panel in the window to a JPanelWithBackground
+	 *
+	 * @param  	i		filename of the background picture              
+	 */
+	public void setJPanelWithBackground(String i)
+	{
+	  myFrame.remove(panel);
+	  panel = new JPanelWithBackground(i);
+	  panel.setLayout(new BorderLayout());
+	  addBorderLayout(/*panel,*/ engine.getCurrent());
+	  panel.add(invisPanels.getPanel(engine.getCurrent()), BorderLayout.CENTER);
+	  myFrame.add(panel);			
+	  myFrame.pack();
+	}
+	
+	/**
+	 * update - updates the text in the money label to match the current money the player has.
+	 *
+	* @param  	obj   The observable object that changed.
+	* @param	arg	  The type of value that the observer was notified with.              
+	 */
+	public void update(Observable obj, Object arg)
+	{
+		if(obj instanceof Player && arg instanceof Integer){
+			moneyButton.setText("     Pengar: " + arg + " kr     ");
+		}			
+	}
 	 
 
 }

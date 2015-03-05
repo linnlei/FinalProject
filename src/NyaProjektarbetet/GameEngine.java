@@ -70,7 +70,7 @@ public class GameEngine {
 
 
 	    	public void save(){
-	    	System.out.println("" + gameState.getSavedPlayer().getMoney());
+	    	//System.out.println("" + gameState.getSavedPlayer().getMoney());
 	    	gameState.setStatePlayer(user);
 	    	gameState.setStateGarden(garden);
 	    	gameState.setStateInventory(userInventory);
@@ -141,12 +141,10 @@ public class GameEngine {
 	
 	public void printWelcome() {
 		String name;
-		JOptionPane.showMessageDialog(gui.myFrame(), "Välkommen till vårt spel!!", "", JOptionPane.INFORMATION_MESSAGE);
-		name = JOptionPane.showInputDialog(gui.myFrame(), "Vad är ditt namn?", "", JOptionPane.QUESTION_MESSAGE);
-		
+		//JOptionPane.showMessageDialog(gui.myFrame(), "Välkommen till vårt spel!", "", JOptionPane.INFORMATION_MESSAGE);
+		name = JOptionPane.showInputDialog(gui.myFrame(), "Vad är ditt namn? \n "
+				+ "(För att ladda in sparfil, skriv in samma namn som när du spelade då)", "Ladda/ny spelare", JOptionPane.QUESTION_MESSAGE);
 		stateSetup(name);
-		
-		
 		
 	}
 	
@@ -170,7 +168,7 @@ public class GameEngine {
 		 else if(current.equals("shop")) room = shop;
 		 else if(current.equals("garden")) room = garden;
 		 else room = minigame1;
-		 System.out.println(current);
+		 //System.out.println(current);
 		 gui.setJPanelWithBackground(room.getPicture(current));
 	 }
 	 
@@ -179,7 +177,7 @@ public class GameEngine {
 		 	user.setUserName(name);
 			gameState.setStatePlayer(user);
 			
-			System.out.println("" + gameState.getSavedPlayer().getUserName());
+			//System.out.println("" + gameState.getSavedPlayer().getUserName());
 			load();	
 			
 			createRooms();

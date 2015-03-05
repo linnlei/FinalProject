@@ -101,7 +101,7 @@ public class Shop extends Room{
 	/**
 	* getPicture - gets the background picture of the room
 	*
-	* @param  	current		the string representation of the room type
+	* @param  	current		the name of the room type
 	* @return				the filename of the background picture		              
 	*/
 	public String getPicture(String current)
