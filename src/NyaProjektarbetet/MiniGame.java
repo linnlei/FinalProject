@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Random;
 
@@ -65,6 +66,13 @@ public class MiniGame extends Room implements ActionListener,MouseListener{
     	startB.addActionListener(this);
     	instructB.addActionListener(this);
     	
+    	window.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+            	Sound.stopSound();
+            	Sound.soundInLoop("Start.wav");
+            }
+        });
+    	
     	window.pack();
     	window.setVisible(true);
     }
@@ -115,6 +123,7 @@ public class MiniGame extends Room implements ActionListener,MouseListener{
 		}
 		else if (e.getSource() == closeB){
 			Sound.stopSound();
+			Sound.soundInLoop("Start.wav");
 			if( miniGameActions.getScore() > 0 ){
 				player.changeMoney(miniGameActions.getScore());
 				JOptionPane.showMessageDialog( null, "Du vann " + miniGameActions.getScore() + 
@@ -125,7 +134,6 @@ public class MiniGame extends Room implements ActionListener,MouseListener{
 				JOptionPane.showMessageDialog( null, "Du har levlat upp!\n" + "Du är nu level: " +
 						player.getLevel(),"Level up!",JOptionPane.OK_CANCEL_OPTION); 
 			}
-			Sound.stopSound();
 			window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));	
 		}
 		else if (e.getSource() == instructB)
