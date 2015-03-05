@@ -1,23 +1,16 @@
 package NyaProjektarbetet;
 
-import java.awt.Image;
 import java.util.HashMap;
 import java.util.Observable;
-import java.util.Set;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 /**
- * This class communicates between Garden, Inventory and RoomPanel.
+ * This class handles the communication between Garden, Inventory and RoomPanels.
  * 
  * @author Jenny Forsberg
  * @version 2015-03-04
  */
 
 public class GardenController extends Observable{
-	
-	
 	String takenImage;
 	GameEngine engine;
 	HashMap<Item, Integer> inventory;	
@@ -30,9 +23,9 @@ public class GardenController extends Observable{
 	
 
 	/**
-	* setInventory - updates GardenControllers inventory.
+	* setInventory - Updates GardenControllers inventory.
 	*
-	* @param  	in  	inventory whit the latest changes
+	* @param  	in  	Inventory with the latest changes.
 	* 		              
 	*/
 	public void setInventory(Inventory in){
@@ -41,9 +34,9 @@ public class GardenController extends Observable{
 	
 
 	/**
-	* getInventory - gets the inventory saved in gardenController.
+	* getInventory - Gets the inventory saved in gardenController.
 	*	
-	* @return		a hashmap with the items and the present number of them.                
+	* @return		A hashmap with the items and the current amount of them.                
 	*/
 	public HashMap< Item,Integer> getInventory()
 	{
@@ -52,13 +45,12 @@ public class GardenController extends Observable{
 	
 
 	/**
-	* getIcon - gets the image of a brick saved at a specific place in the garden.
+	* getIcon - Gets the image of a brick saved at a specific place in the garden.
 	*
-	* @param  	lopnr   the position of a specific place in the garden.
+	* @param  	lopnr   The position of a specific place in the garden.
 	* 	 
-	* @return			a string that represents an image of a brick.                
+	* @return			A string that represents an image of a brick.                
 	*/
-	
 	public String getIcon(int lopnr)
 	{
 		return engine.garden.getGardenIcon(lopnr);
@@ -66,10 +58,10 @@ public class GardenController extends Observable{
 	
 	
 	/**
-	* remove - removes the image of a brick from a specific place in the garden
+	* remove - Removes the image of a brick from a specific place in the garden
 	* 		   and informs the present inventory of the change.
 	*
-	* @param  lopnr   the position of a specific place in the garden.
+	* @param  lopnr   The position of a specific place in the garden.
 	*
 	*/
 	public void remove(int lopnr)
@@ -89,9 +81,9 @@ public class GardenController extends Observable{
 	
 	
 	/**
-	* take - remembers what image of a brick  the user has taken.
+	* take - Remembers what image of an item  the user has picked up.
 	*
-	* @param  imageOfItem   a string that represents the taken image of a brick.
+	* @param  imageOfItem   A string that represents the image of a brick.
 	*
 	*/
 	public void take(String imageOfItem)
@@ -101,9 +93,9 @@ public class GardenController extends Observable{
 	
 	
 	/**
-	* getTakenImage - gets the taken image of a brick if it's allowed.
+	* getTakenImage - Gets the taken image of a brick if it's allowed.
 	*
-	* @return 	a string that represents the taken image of a brick or null.
+	* @return 	A string that represents the image of a brick, or null.
 	*
 	*/
 	public String getTakenImage()
@@ -127,10 +119,10 @@ public class GardenController extends Observable{
 	
 	
 	/**
-	* build - saves the taken image of a brick at a specific place in the garden
-	* 		  and informs the present inventory of the change.
+	* build - Saves the taken image of a brick at a specific place in the garden
+	* 		  and informs the inventory of the change.
 	*
-	* @param  	lopnr   the position of a specific place in the garden.
+	* @param  	lopnr   The position of a specific place in the garden.
 	* 	                 
 	*/
 	public void build(int lopnr)
@@ -148,4 +140,5 @@ public class GardenController extends Observable{
 		    }
 		}
 	}
+	
 }

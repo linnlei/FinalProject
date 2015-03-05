@@ -1,21 +1,16 @@
 package NyaProjektarbetet;
 
-import java.awt.Image;
 import java.io.Serializable;
 import java.util.HashMap;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-
 /**
- * This class saves the specific things that makes the garden.
+ * This class stores the items that make up the garden, and their locations in the garden lot.
  * 
  * @author Jenny Forsberg
  * @version 2015-03-04
  */
-
 public class Garden extends Room implements Serializable{
-	
+	private static final long serialVersionUID = 1L;
 	private HashMap<Integer, String> gardenItems;  
 	private String gardenPicture;
 	

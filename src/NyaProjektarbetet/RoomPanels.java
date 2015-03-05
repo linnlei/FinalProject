@@ -47,7 +47,7 @@ public class RoomPanels implements Observer{
 	private GameEngine engine;
 	private JPanel panelClickable;
 	private ArrayList<JButton> itemButtons = new ArrayList<JButton>();
-	private int presentItem; 
+	//private int presentItem; 
 	//private HashMap<Integer, JButton> panelButtons = new  HashMap<Integer, JButton>();
 	private HashMap<Item, JButton> panelButtons2 = new  HashMap<Item, JButton>();
 	private HashMap<String, Integer> rightPanel = new  HashMap<String, Integer>();
@@ -450,7 +450,7 @@ public class RoomPanels implements Observer{
         for(Entry<Item, Integer> entry: pairs){
 	        buttonNr++;
 	        	
-	        final int bNr = buttonNr;
+	        //final int bNr = buttonNr;
 	    	// Visa bilder på tillgänliga Item
 	        final Item item= entry.getKey();	
 	        
@@ -469,7 +469,7 @@ public class RoomPanels implements Observer{
 					public void actionPerformed(ActionEvent arg0) {
 												
 							gardenController.take(item.getItemPicture());
-							presentItem = bNr;
+							//presentItem = bNr;
 					}
 					
 			    });	

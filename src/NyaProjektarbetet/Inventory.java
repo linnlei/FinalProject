@@ -3,14 +3,10 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Observable;
 
-/**
- * 
- * Just nu innehåller inventory en hashmap med bluebrick o redbrick bara
- * För att testa detta kan man köra den bortkommenterade raden
- *
- */
+
 
 public class Inventory extends Observable implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private HashMap<Item, Integer> items;
 	
 	public Inventory() {
@@ -30,9 +26,6 @@ public class Inventory extends Observable implements Serializable {
 	}
 	
 	private void createInventory(){
-		//******* Lägg in nya items så att de med HÖGST level läggs till FÖRST med items.put! 
-		//(Detta för tt de ska hamna i rätt ordning i shop)
-		
 		Item blueBrick = new Item(10, 1, "BrickBlue.png", "Blå tegelsten");
 		Item redBrick = new Item(20, 1, "BrickRed.png", "Röd tegelsten");
 		Item fishBrick = new Item(30, 2, "fish.png", "Fisksten");
@@ -44,7 +37,6 @@ public class Inventory extends Observable implements Serializable {
 		items.put(fishBrick, 0);
 		items.put(redBrick, 0);
 		items.put(blueBrick, 0);
-		//JOptionPane.showMessageDialog(gui.myFrame(), items.get(blueBrick), "", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 }

@@ -5,14 +5,17 @@ import java.util.HashMap;
 
 
 /**
- * This class is the basclass for the rooms.
+ * The Room class is the base class for the rooms.
  * 
  * @author 
  * @version 2015-03-04
  */
 
 public class Room implements Serializable{
-		
+	private static final long serialVersionUID = 1L;
+
+
+
 	public Room()
 	{
 	}

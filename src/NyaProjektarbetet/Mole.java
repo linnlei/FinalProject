@@ -7,21 +7,14 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.util.Random;
 
 
 public class Mole extends JButton implements ActionListener {
+	private static final long serialVersionUID = 1L;
 	MoleActions actions;
     private Timer timer;                        // för start/stop actions
     private int animationDuration = 2300; 		// varje animation tar 2,3 s
@@ -35,8 +28,8 @@ public class Mole extends JButton implements ActionListener {
     private ImageIcon wrongAnsPic;
     
     /**
-    * Class-construktor
-    * Creates a molebutton and starts a animation-timer.
+    * Class-constructor
+    * Creates a mole-button and starts an animation-timer.
     * 
     * @param label
     * @param miniGame

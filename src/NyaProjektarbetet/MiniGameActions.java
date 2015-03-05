@@ -2,7 +2,6 @@ package NyaProjektarbetet;
 
 import java.util.Random;
 
-import javax.swing.JTextArea;
 
 public class MiniGameActions {
 	private MiniGame miniGame;
