@@ -4,6 +4,7 @@ package NyaProjektarbetet;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -50,7 +51,14 @@ public class Mole extends JButton implements ActionListener {
         
         timer = new Timer(30, this);
         
-        wrongAnsPic = new ImageIcon("pictures/squirrel2.png");
+    	ImageIcon icon = new ImageIcon("pictures/dirt_pile.png");
+	    Image img = icon.getImage();
+	    Image newimg = img.getScaledInstance(110, 80,  java.awt.Image.SCALE_FAST);
+	    ImageIcon newIcon = new ImageIcon(newimg);
+        
+        //wrongAnsPic = new ImageIcon("pictures/squirrel2.png");
+	    wrongAnsPic = newIcon;
+	    
         molePic = new ImageIcon("pictures/nymole2.png");
         setIcon(molePic);
         addActionListener(this);

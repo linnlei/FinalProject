@@ -26,14 +26,6 @@ import javax.swing.JPanel;
 import java.awt.Toolkit;
 
 
-
-
-
-
-
-
-
-//import java.awt.Image;
 import javax.swing.JTextField;
 
 /**
@@ -436,6 +428,7 @@ public class RoomPanels implements Observer{
 	    
 	  //*************************************Panelen vid sidan av rutnätet*********************************************** 	
 	    
+	    
 	    showInventory = new JPanel();
 	    showInventory.setLayout(null);
 	    showInventory.setBounds(1279,0, 81, 1000);
@@ -491,9 +484,11 @@ public class RoomPanels implements Observer{
 		    // Byt till ny position
 		    rad= rad +60;
 	    }
-	      	    
-	     panel.add(showInventory);
-	     return panel;  
+        
+
+        
+        panel.add(showInventory);
+        return panel;  
 	}
 	
 	/**
