@@ -22,7 +22,7 @@ import javax.swing.*;
 //Eller ska vi skriva alla fyra som authors istället? :) //Linn
 
 /**
- * This class creates the base GUI, everything but the central panel.
+ * The UserInterface class creates the base GUI: everything but the central panel.
  * 
  * @author Fifi Johansson, Linn Leiulfsrud
  * @version 2015-03-04

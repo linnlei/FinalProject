@@ -5,7 +5,7 @@ import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 /**
- * This class sets up the logic of the shop. It creates the list of items in the shop and sets
+ * The Shop class sets up the logic of the shop. It creates the list of items in the shop and sets
  * the items as either available or unavailable at the player's current level. It also takes care of
  * the exchange of money and items when buying.
  * 
@@ -24,8 +24,8 @@ public class Shop extends Room{
 	 * to be stored in the shop. Saves a reference to the current player.
 	 * Is the model part of the MVC design involving Shop, RoomPanels, and ShopController.
 	 * 
-	 * @param	inventory	the inventory of the current game
-	 * @param	player		the current player
+	 * @param	inventory	The inventory of the current game.
+	 * @param	player		The current player.
 	 */
 	public Shop(HashMap<Item, Integer> inventory, Player player){
 		shopItems = new HashMap<Item, Boolean>();
@@ -40,16 +40,16 @@ public class Shop extends Room{
 	}
 	
 	/**
-	* getShopItems - returns the items stored in the shop
+	* getShopItems - Returns the items stored in the shop.
 	*
-	* @return			returns the Hashmap of the shop's items and their availability         
+	* @return			Returns the Hashmap of the shop's items and their availability.         
 	*/
 	public HashMap<Item, Boolean> getShopItems(){
 		return shopItems;
 	}
 	
 	/**
-	* updateShop - updates the availability of the items by checking the player level            
+	* updateShop - Updates the availability of the items by checking the player level.           
 	*/
 	private void updateShop(){
 		
@@ -62,10 +62,10 @@ public class Shop extends Room{
 	}
 	
 	/**
-	* calculatePrice - calculates the total price of a purchase
+	* calculatePrice - Calculates the total price of a purchase.
 	*
-	* @param	boughtItem		the type of item that the player wants to buy
-	* @param	numberOfItems	the amount of items the player wants to buy              
+	* @param	boughtItem		The type of item that the player wants to buy.
+	* @param	numberOfItems	The amount of items the player wants to buy.              
 	*/
 	public void calculatePrice(Item boughtItem, int numberOfItems){
 		int price = 0;
@@ -81,11 +81,11 @@ public class Shop extends Room{
 	}
 	
 	/**
-	* buy - checks if the item is available, subtracts the total from the player's money, and adds the
-	* 		right amount of items to the inventory
+	* buy - Checks if the item is available, subtracts the total from the player's money, and adds the
+	* 		right amount of items to the inventory.
 	*
-	* @param	boughtItem		the type of item that the player wants to buy
-	* @param	numberOfItems	the amount of items the player wants to buy            
+	* @param	boughtItem		The type of item that the player wants to buy.
+	* @param	numberOfItems	The amount of items the player wants to buy.            
 	*/
 	public void buy(Item boughtItem, int numberOfItems){ 
 		
@@ -99,10 +99,10 @@ public class Shop extends Room{
 	}
 	
 	/**
-	* getPicture - gets the background picture of the room
+	* getPicture - Gets the background picture of the room.
 	*
-	* @param  	current		the name of the room type
-	* @return				the filename of the background picture		              
+	* @param  	current		The name of the room type.
+	* @return				The filename of the background picture.		              
 	*/
 	public String getPicture(String current)
 	{
