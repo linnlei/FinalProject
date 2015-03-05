@@ -22,8 +22,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-public class MiniGame extends Room implements ActionListener,MouseListener{
-	private static final long serialVersionUID = 1L;
+/**
+ * The MiniGame class creates a frame and most of its graphics.
+ * This class contains an instance of the Player class.
+ * <p>
+ * 
+ * 
+ * @author  Linda Karlsson
+ * @version 2015-03-05
+ */
+public class MiniGame implements ActionListener, MouseListener {
 	public JFrame window;
 	public JPanelWithBackground pan, pan2;
     public JButton startB;

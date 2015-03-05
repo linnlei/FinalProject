@@ -2,7 +2,13 @@ package NyaProjektarbetet;
 
 import java.util.Random;
 
-
+/**
+ * The MiniGameActions class creates a button and its graphics.
+ * This class contains an instance of the MiniGame class.
+ * 
+ * @author Linda Karlsson
+ * @version 2015-03-05
+ */
 public class MiniGameActions {
 	private MiniGame miniGame;
 	private static int mathSolution = 0;
@@ -17,7 +23,7 @@ public class MiniGameActions {
      * 
      * @param minigame
      */
-	public MiniGameActions(MiniGame miniGame){
+	public MiniGameActions(MiniGame miniGame) {
 		Sound.stopSound();
 		this.miniGame = miniGame;
 		Sound.soundInLoop("Jaunty_Gumption.wav");
@@ -26,7 +32,7 @@ public class MiniGameActions {
     /**
      * Creates a mathproblem and a solution to the problem.
      */
-	public void createMathProblemSolution(){
+	public void createMathProblemSolution() {
     	Random rand = new Random();
     	product1 = rand.nextInt(11); 
     	product2 = rand.nextInt(11); 
@@ -40,7 +46,7 @@ public class MiniGameActions {
      * 
      * @return mathProbText    a string containing the mathproblem to solve
      */
-    public String getMathProblemString(){
+    public String getMathProblemString() {
     	String mathProbText = ("\n      " + product1 + "x"+ product2);
     	return mathProbText;
     }
@@ -50,7 +56,7 @@ public class MiniGameActions {
      * 
      * @return solution    a string containing the solution to the mathproblem
      */
-    public String getMathSolutionString(){
+    public String getMathSolutionString() {
     	String solution = ("" + mathSolution);
     	return solution;
     }
@@ -60,14 +66,14 @@ public class MiniGameActions {
      * 
      * @return wrongAnsweres    an int
      */
-    public int getWrongAnswers(){
+    public int getWrongAnswers() {
     	return wrongAnsweres;
     }
     
     /**
      * Turns the products of the problem into a string and returns it.
      */
-    public void setWrongAnswers(){
+    public void setWrongAnswers() {
     	if(wrongAnsweres > 3){
     		wrongAnsweres = 0;
     	}
@@ -76,11 +82,17 @@ public class MiniGameActions {
     	}
     }
     
-    public int getScore(){
+    /**
+     * Returns the score.
+     */
+    public int getScore() {
     	return score;
     }
 
-    public void setScore(int value){
+    /**
+     * Sets the score.
+     */
+    public void setScore(int value) {
     	score += value;
     }
 }

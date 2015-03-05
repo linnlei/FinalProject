@@ -1,6 +1,5 @@
 package NyaProjektarbetet;
 
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -11,16 +10,23 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.Timer;
 
-
+/**
+ * The Mole class creates a button and its graphics.
+ * The class contains instances of the MoleActions class and the MiniGame class.
+ * 
+ * @author Linda Karlsson
+ * @version 2015-03-05
+ */
 
 public class Mole extends JButton implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	MoleActions actions;
-    private Timer timer;                        // för start/stop actions
-    private int animationDuration = 2300; 		// varje animation tar 2,3 s
-    private long animStartTime;    				// starta tiden för varje animation
-    private int translateY = 0;                 // knappens y position
-    private static final int MAX_Y = 100;
+	private MoleActions actions;
+    private Timer timer;
+    private int animDuration = 2300;
+    private long animStartTime;
+    
+    private int translateY = 0;
+    private static final int y_max = 100;
     
     private MiniGame miniGame;
     private String moleAns;
@@ -29,41 +35,38 @@ public class Mole extends JButton implements ActionListener {
     
     /**
     * Class-constructor
-    * Creates a mole-button and starts an animation-timer.
+    * Creates a mole-button and starts a timer.
     * 
-    * @param label
-    * @param miniGame
+    * @param label    a String which contains a number
+    * @param miniGame    
     */
     public Mole(String label, MiniGame miniGame) {
-    	super(label); // lägger till strängen som innehåller en siffra på knappen
+    	super(label);
         this.miniGame = miniGame;
         actions = new MoleActions(miniGame);
         moleAns = label;    	
     	
-        setFont(new Font("Serif", Font.BOLD, 40)); // ändrar textens storlek och färg
+        setFont(new Font("Serif", Font.BOLD, 40));
         setForeground(new Color(7800));
-        //setBorder(BorderFactory.createLineBorder(Color.white));
         
         setOpaque(false);
     	setContentAreaFilled(false);
         setBorderPainted(false);
-        
-        timer = new Timer(30, this);
         
         wrongAnsPic = new ImageIcon("pictures/squirrel2.png");
         molePic = new ImageIcon("pictures/nymole2.png");
         setIcon(molePic);
         addActionListener(this);
         
+        timer = new Timer(30, this);
         animStartTime = System.nanoTime() / 1000000;
         timer.start();
     }
     
     /**
-     * Visar komponenten på position (0, translateY). Detta ändrar endast
-     * den renderade positionen, icke den fysiska.
+     * This method shows the component on the position (0, translateY). 
      * 
-     * @param g
+     * @param g    the component that gets shown
      */
     public void paint(Graphics g) {
         g.translate(0, translateY);
@@ -71,55 +74,54 @@ public class Mole extends JButton implements ActionListener {
     }
     
     /**
-     * actionPerformed handles the pressed button that stops the animation, 
+     * ActionPerformed handles the pressed button that stops the animation, 
      * points when the button containing the answer is right or wrong and 
      * when the player loose.
      * 
-     * @param e
+     * @param e    the actionevent
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(this)) {
                 timer.stop();
 
                 // Om den klickade mullvadens tal = rätt svar, lägg till 10 poäng
+                // och skapa nya mullvadar
                 if(moleAns.equals(miniGame.miniGameActions.getMathSolutionString())){
                 	actions.updateScore(miniGame.getPointsSoFarText());
                 	Sound.playSomeSound("coin.wav");
                 	miniGame.createMole();
                 }
-                //Förlorar vid 5 fel
+                // Spelet förloras vid 5 fel
                 else if(miniGame.miniGameActions.getWrongAnswers() > 3){
                 	miniGame.tryAgain();
                 	miniGame.miniGameActions.setWrongAnswers();
                 }
                 else{
-                	//miniGame.pan2.remove(this);
                 	actions.wrongAnswere(miniGame.getPointsSoFarText());
                 	setIcon(wrongAnsPic);
                 	Sound.playSomeSound("boing3.wav");
                 }
-                //this.setText("Start Animation");
-                // reset translation to 0
                 translateY = 0;
-            //}
         } else {
-            // Timer event
-            // calculate the elapsed fraction
-            long currentTime = System.nanoTime() / 1000000;
-            long totalTime = currentTime - animStartTime;
-            if (totalTime > animationDuration) {
-                animStartTime = currentTime;
+            // Timer händelse
+            // beräknar den passerade fraktionen
+            long ongoingTime = System.nanoTime() / 1000000;
+            long totalTime = ongoingTime - animStartTime;
+            
+            if (totalTime > animDuration) {
+                animStartTime = ongoingTime;
             }
-            float fraction = (float)totalTime / animationDuration;
+            
+            float fraction = (float)totalTime / animDuration;
             fraction = Math.min(1.0f, fraction);
-            // This calculation will cause translateY to go from 0 to MAX_Y
-            // as the fraction goes from 0 to 1
+            
+            // translateY går från 0 till y_max, fraktionen går från 0 till 1
             if (fraction < .5f) {
-                translateY = (int)(MAX_Y * (2 * fraction));
+                translateY = (int)(y_max * (2 * fraction));
             } else {
-                translateY = (int)(MAX_Y * (2 * (1 - fraction)));
+                translateY = (int)(y_max * (2 * (1 - fraction)));
             }
-            // redisplay the component with the new location
+            // updaterar komponenten med den nya positionen
             repaint();
         }
     }

@@ -10,9 +10,9 @@ public class MoleActions {
     /**
     * Class-constructor
     * 
-    * @param    
+    * @param   miniGame
     */
-	public MoleActions(MiniGame miniGame){
+	public MoleActions(MiniGame miniGame) {
 		this.miniGame = miniGame;
 		
 	}
@@ -20,7 +20,7 @@ public class MoleActions {
     /**
     * Updates the textarea which contains the score
     * 
-    * @a    the score-textarea that gets updated  
+    * @a    the textarea of the score that gets updated  
     */
 	public void updateScore(JTextArea a) {
 		miniGame.miniGameActions.setScore(10);
