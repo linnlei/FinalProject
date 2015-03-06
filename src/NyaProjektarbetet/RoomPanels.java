@@ -386,31 +386,26 @@ public class RoomPanels implements Observer{
 			    clickButton.setBounds(column,rad,30,30);
 			    clickButton.setContentAreaFilled(false);		//Osynlighet
 			    clickButton.setBorderPainted(false);			//Osynlighet
+			    
+			    
 			    clickButton.addActionListener(new ActionListener() {
-			    	
 			    	String state = startState; // Håller koll på om det går att bygga eller om det redan finns en tegelsten där
 			    	String takenImageString;
 			    	ImageIcon takenImage; 
-			    	
 			    	@Override
 					public void actionPerformed(ActionEvent arg0) {
-			    		
-			    		
 						if(state.equals("buildable"))
 						{
 							takenImageString = gardenController.getTakenImage();	// Hämta stringen för den bild på tegelsten som användaren valt
 							takenImage = new ImageIcon("pictures/" +takenImageString);
-							if(takenImage!=null && (gardenController.getTakenImage())!=null)
-							{
+							if(takenImage!=null && (gardenController.getTakenImage())!=null){
 								state="unbuildable";
 								clickButton.setIcon(takenImage);
 								gardenController.build(nr);
 								takenImage = null;
 							}						
 						}
-	
-						else if(state.equals("unbuildable"))
-					    {
+						else if(state.equals("unbuildable")){
 							state="buildable";
 							clickButton.setIcon(null);
 							clickButton.setContentAreaFilled(false);
@@ -459,15 +454,13 @@ public class RoomPanels implements Observer{
 		    
 		    //Vad bildknappen ska göra
 		    showItem.addActionListener(new ActionListener() {
-			    	    	
-			    	@Override
-					public void actionPerformed(ActionEvent arg0) {
-												
-							gardenController.take(item.getItemPicture());
-							//presentItem = bNr;
-					}
-					
-			    });	
+		    	
+		    	@Override
+				public void actionPerformed(ActionEvent arg0) {
+		    		gardenController.take(item.getItemPicture());
+					//presentItem = bNr;
+				}
+		    });	
 			    
 		    //Visa antal  tillgänliga Items
 		    itemsLeft2 = new JButton();
