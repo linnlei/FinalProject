@@ -90,7 +90,7 @@ public class RoomPanels implements Observer{
 	private JPanel createCenterPanel()
 	{
 		Sound.stopSound();
-		Sound.soundInLoop("Start.wav");
+		Sound.soundInLoop("Forest.wav");
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		screenSize.setSize( screenSize.getWidth() , (screenSize.getHeight() - 30) ); //-30 kompenserar för windows-menybaren
         double width = screenSize.getWidth();

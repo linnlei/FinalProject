@@ -83,7 +83,7 @@ public class MiniGame implements ActionListener, MouseListener {
     	window.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
             	Sound.stopSound();
-            	//Sound.soundInLoop("Start.wav");
+            	Sound.soundInLoop("Forest.wav");
             }
         });
     	
@@ -148,7 +148,7 @@ public class MiniGame implements ActionListener, MouseListener {
 			}
 			window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));	
 			Sound.stopSound();
-			Sound.soundInLoop("Start.wav");
+			Sound.soundInLoop("Forest.wav");
 		}
 		else if (e.getSource() == instructB)
 		{
