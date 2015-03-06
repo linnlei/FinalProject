@@ -12,7 +12,8 @@ import javax.swing.Timer;
 
 /**
  * The Mole class creates a button and its graphics.
- * The class contains instances of the MoleActions class and the MiniGame class.
+ * The class contains instances of the MoleActions-, MiniGame-, Timer- and
+ * ImageIcon class.
  * 
  * @author Linda Karlsson
  * @version 2015-03-05
@@ -38,7 +39,7 @@ public class Mole extends JButton implements ActionListener {
     * Creates a mole-button and starts a timer.
     * 
     * @param label    a String which contains a number
-    * @param miniGame   
+    * @param miniGame   MiniGame
     */
     public Mole(String label, MiniGame miniGame) {
     	super(label);
@@ -66,7 +67,7 @@ public class Mole extends JButton implements ActionListener {
     /**
      * This method shows the component on the position (0, translateY). 
      * 
-     * @param g    the component that gets shown
+     * @param g    the component that is shown
      */
     public void paint(Graphics g) {
         g.translate(0, translateY);

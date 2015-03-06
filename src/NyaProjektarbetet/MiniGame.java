@@ -27,10 +27,10 @@ import javax.swing.JTextArea;
  * The MiniGame class creates a frame and most of its graphics.
  * This class contains an instance of the Player class.
  * <p>
- * It implements ActionListener, MouseListener
  * 
  * @author  Linda Karlsson
  * @version 2015-03-05
+ * @see JPanel, JFrame, JButton, JTextArea, JLabel, JPanelWithBackground 
  */
 public class MiniGame implements ActionListener, MouseListener {
 	public JFrame window;
@@ -48,6 +48,12 @@ public class MiniGame implements ActionListener, MouseListener {
     public MiniGameActions miniGameActions;
     public Player player;
 
+    
+    /**
+    * Class-constructor
+    * 
+    * @param   player
+    */
     public MiniGame(Player player)
     {
     	this.player = player;
@@ -118,7 +124,7 @@ public class MiniGame implements ActionListener, MouseListener {
     /**
      * Class-constructor
      * 
-     * @param minigame
+     * @param e
      */
     public void actionPerformed (ActionEvent e)
     {
@@ -154,6 +160,9 @@ public class MiniGame implements ActionListener, MouseListener {
 		}
 	}
     
+    /**
+     * Changes the components of the window.
+     */
     private void startMoleGame(){
     	pan2 = new JPanelWithBackground("pictures/falt.jpg");
     	pan2.setPreferredSize (new Dimension (700, 700));
@@ -166,17 +175,14 @@ public class MiniGame implements ActionListener, MouseListener {
         pan2.addMouseListener(this);
 		
         // ändrar texten i textrutorna
-    	//pointsSoFarText.setPreferredSize (new Dimension (40, 40));
     	pointsSoFarText.setFont(new Font("Serif", Font.BOLD, 28));
-    	
-    	//mathProblem.setPreferredSize (new Dimension (40, 40));
     	mathProblem.setFont(new Font("Serif", Font.BOLD, 50));
 
     	window.pack();
     }
 
     /**
-     * Ändrar muspekaren till en hammare
+     * Changes the cursor into a hammer.
      */
 	public void setTheCursor(){
 		Toolkit toolkit = Toolkit.getDefaultToolkit();  
@@ -198,25 +204,39 @@ public class MiniGame implements ActionListener, MouseListener {
 		    pan2.setCursor(cursor);}  
 	}
 
+    /**
+     * Changes the cursor picture when the mouse button is pressed.
+     */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		cursorClick = true;
 		setTheCursor();
 	}
-	
+    /**
+     * Changes the cursor picture when the mouse button is released.
+     */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		setTheCursor();
 	}
 	
+    /**
+     * Overridden method
+     */
 	@Override
 	public void mouseClicked(MouseEvent e) {	
 	}
 
+    /**
+     * Overridden method
+     */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 	}
 
+    /**
+     * Overridden method
+     */
 	@Override
 	public void mouseExited(MouseEvent e) {
 	}
@@ -248,7 +268,6 @@ public class MiniGame implements ActionListener, MouseListener {
     		
     		if( i < 3 ){
     			emptyButton = new JButton();
-    			//emptyButton.setBounds(100,a,100, 100);
     			emptyButton.setOpaque(false);
     			emptyButton.setContentAreaFilled(false);
     			emptyButton.setBorderPainted(false);
@@ -270,6 +289,9 @@ public class MiniGame implements ActionListener, MouseListener {
     	window.pack();
 	}
 
+	/**
+	 * Adds the option to replay the game.
+	 */
 	public void tryAgain(){
 		replay = new JButton("Spela igen");
     	replay.addActionListener(this);
@@ -287,11 +309,22 @@ public class MiniGame implements ActionListener, MouseListener {
 		
 		System.out.println("add replay");
 	}
+	
+	/**
+	 * Returns a JTextArea.
+	 * 
+	 * @return pointsSoFarText    the JTextArea which contains the points.
+	 */
     public JTextArea getPointsSoFarText()
     {
     	return pointsSoFarText;
     }
     
+	/**
+	 * Returns a JTextArea.
+	 * 
+	 * @return mathProblem    the JTextArea which contains the math-problem.
+	 */
     public JTextArea getMathProblemTextArea()
     {
     	return mathProblem;

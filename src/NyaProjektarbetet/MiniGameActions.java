@@ -30,7 +30,7 @@ public class MiniGameActions {
 	}
 
     /**
-     * Creates a mathproblem and a solution to the problem.
+     * Creates a math-problem and a solution to the problem.
      */
 	public void createMathProblemSolution() {
     	Random rand = new Random();
@@ -62,9 +62,9 @@ public class MiniGameActions {
     }
     
     /**
-     * Returns how many times the player got the answere wrong.
+     * Returns how many times the player got the answer wrong.
      * 
-     * @return wrongAnsweres    an int
+     * @return wrongAnsweres    an int of the amount of the wrong answers
      */
     public int getWrongAnswers() {
     	return wrongAnsweres;
@@ -83,14 +83,14 @@ public class MiniGameActions {
     }
     
     /**
-     * Returns the score.
+     * Returns the game score.
      */
     public int getScore() {
     	return score;
     }
 
     /**
-     * Sets the score.
+     * Sets the game score.
      */
     public void setScore(int value) {
     	score += value;

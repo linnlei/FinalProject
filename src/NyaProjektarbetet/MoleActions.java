@@ -2,7 +2,13 @@ package NyaProjektarbetet;
 
 import javax.swing.JTextArea;
 
-
+/**
+ * The MoleActions class handles the score in the mole-game.
+ * The class contains an instance the MiniGame class.
+ * 
+ * @author Linda Karlsson
+ * @version 2015-03-05
+ */
 public class MoleActions {
 	private MiniGame miniGame;
     private static final String rightAns = "Antal poäng: ";
