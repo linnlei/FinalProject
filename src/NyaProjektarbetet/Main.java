@@ -4,8 +4,8 @@ package NyaProjektarbetet;
  * The Main class creates the Game which in turn creates the rest of
  * the needed parts of the game.
  * 
- * @author ???
- * @version 2015-03-02
+ * @author Jenny Forsberg
+ * @version 2015-03-03
  */
 public class Main {
 	

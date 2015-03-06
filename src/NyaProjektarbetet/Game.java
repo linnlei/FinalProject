@@ -4,8 +4,8 @@ package NyaProjektarbetet;
  * The Game class creates the engine which in turn controls all the
  * aspects of the game.
  * 
- * @author ???
- * @version 2015-03-02
+ * @author Fifi Johansson
+ * @version 2015-03-03
  */
 public class Game {
 

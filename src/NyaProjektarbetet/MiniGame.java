@@ -83,7 +83,7 @@ public class MiniGame implements ActionListener, MouseListener {
     	window.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
             	Sound.stopSound();
-            	Sound.soundInLoop("Forest.wav");
+            	//Sound.soundInLoop("Forest.wav");
             }
         });
     	
@@ -314,7 +314,7 @@ public class MiniGame implements ActionListener, MouseListener {
 		window.add(pan2);
 		window.pack();
 		
-		System.out.println("add replay");
+		//System.out.println("add replay");
 	}
 	
 	/**

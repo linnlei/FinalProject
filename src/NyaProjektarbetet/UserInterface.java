@@ -20,7 +20,7 @@ import javax.swing.*;
 /**
  * The UserInterface class creates the base GUI: everything but the central panel.
  * 
- * @author ???
+ * @author Fifi Johansson, Jenny Forsberg
  * @version 2015-03-04
  */
 

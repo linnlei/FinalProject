@@ -8,11 +8,11 @@ import java.io.Serializable;
 import javax.swing.*;
 
 /**
- * The GameEngine class creates the different rooms and handles the change between them when the player moves
- * to another room. It also handles saving and loading.
- * The class contains instances of the player class, the inventory class, and the GUI class.
+ * The GameEngine class sets the game up at startup, creates the different rooms, and 
+ * handles the change between them when the player moves to another room. 
+ * It also handles saving and loading.
  * 
- * @author ???
+ * @author Linn Leiulfsrud
  * @version 2015-03-05
  */
 public class GameEngine {
@@ -30,7 +30,7 @@ public class GameEngine {
 	 * The State class stores the current state of the player, the garden lot, and
 	 * the inventory. This state is used when saving and loading.
 	 * 
-	 * @author ???
+	 * @author Linda Karlsson
 	 * @version 2015-03-05
 	 */
 	public static class State implements Serializable{
