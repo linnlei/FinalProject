@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Random;
 
@@ -73,6 +74,13 @@ public class MiniGame implements ActionListener, MouseListener {
     	startB.addActionListener(this);
     	instructB.addActionListener(this);
     	
+    	window.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+            	Sound.stopSound();
+            	Sound.soundInLoop("Start.wav");
+            }
+        });
+    	
     	window.pack();
     	window.setVisible(true);
     }
@@ -123,17 +131,19 @@ public class MiniGame implements ActionListener, MouseListener {
 		}
 		else if (e.getSource() == closeB){
 			Sound.stopSound();
+			Sound.soundInLoop("Start.wav");
 			if( miniGameActions.getScore() > 0 ){
 				player.changeMoney(miniGameActions.getScore());
 			}
-			Sound.stopSound();
 			window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));	
 		}
 		else if (e.getSource() == instructB)
 		{
 			Sound.playSomeSound("Randomize8.wav");
 			text.setFont(new Font("Serif", Font.BOLD + Font.ITALIC, 21));
-			text.setText("  Spelinstruktioner:\n  Klicka på mullvaderna som visar rätt svar till matteproblemet\n  för att vinna pengar. \n  Rätt svar ger 10 kr och fel svar ger -2 kr. \n  Vinner man inget alls tas inga pengar bort.");
+			text.setText("  Spelinstruktioner:\n  Klicka på mullvaderna som visar rätt svar till matteproblemet\n  för att vinna pengar. " + ""
+					+ "Rätt svar ger 10 kr och fel svar ger -2 kr. \n  Vinner du inget tas inga pengar bort. " + 
+					"Om du får 100 poäng i sträck\n levlar du upp.");
 		    text.setEditable(false);
 		}
 		else if (e.getSource() == replay)

@@ -22,8 +22,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import java.awt.Toolkit;
+
 
 
 import javax.swing.JTextField;
@@ -88,7 +90,7 @@ public class RoomPanels implements Observer{
 	private JPanel createCenterPanel()
 	{
 		Sound.stopSound();
-		//Sound.soundInLoop("");
+		Sound.soundInLoop("Start.wav");
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		screenSize.setSize( screenSize.getWidth() , (screenSize.getHeight() - 30) ); //-30 kompenserar för windows-menybaren
         double width = screenSize.getWidth();
@@ -176,7 +178,7 @@ public class RoomPanels implements Observer{
 	private JPanel createShopPanel()
 	{
 		Sound.stopSound();
-		//Sound.soundInLoop("");
+		Sound.soundInLoop("Colorful_Vacation.wav");
 		HashMap<Item, Boolean> shopItems = engine.shop.getShopItems();
 		
 		//**************************Skapa paneler**************************
@@ -494,25 +496,27 @@ public class RoomPanels implements Observer{
 	/**
 	* createInventoryPanel - creates the graphic panel for inventory.
 	* 	 
-	* @return			  A JPanel for inventory.                
+	* @return              
 	*/
 	public void createInventoryPanel()
 	{
 		JFrame inventory = new JFrame("Ryggsäck");
+		inventory.setPreferredSize(new Dimension(600,400));	
 		HashMap<Item, Integer> items = engine.getPlayer().myInventory.getInventory();
 		
 		JPanelWithBackground invBG = new JPanelWithBackground("pictures/inventoryBG.jpg");
 		inventory.add(invBG);
-		invBG.setLayout(new GridLayout(4,1));
+		invBG.setLayout(new GridLayout(3,1));
 		
+		JLabel title = new JLabel("Ryggsäck");
+	    title.setFont(new Font("Viner Hand ITC", Font.BOLD, 50));
+	    title.setHorizontalAlignment(SwingConstants.CENTER);
+	    invBG.add(title);
+	    
 		JPanel panel = new JPanel();
 	    panel.setOpaque(false);
-	    panel.setLayout(new GridLayout(4,1));
+	    panel.setLayout(new GridLayout(4,4));
 	    invBG.add(panel);
-		
-	    JLabel title = new JLabel("Ryggsäck");
-	    title.setFont(new Font("Viner Hand ITC", Font.BOLD, 50));
-	    invBG.add(title);
 		
 		for (Entry<Item, Integer> entry : items.entrySet() ) {
 			
@@ -523,12 +527,13 @@ public class RoomPanels implements Observer{
 				JLabel imglabelapprove1 = new JLabel(entry.getValue().toString());
 			    imglabelapprove1.setIcon(iconapprove);
 			    imglabelapprove1.setHorizontalAlignment(JLabel.CENTER);
-			    invBG.add(imglabelapprove1);
+			    panel.add(imglabelapprove1);
 			}
 		}
 		
 		inventory.pack();
 		inventory.setVisible(true);
+		inventory.setLocationRelativeTo(null);
 	}
 	
 	/**

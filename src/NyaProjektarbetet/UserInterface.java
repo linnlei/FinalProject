@@ -103,6 +103,12 @@ public class UserInterface implements Observer{
             }	
         });
         
+        myFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+            	Sound.stopSound();
+            }
+        });
+        
         Sound.soundInLoop("start.wav");
 		
         myFrame.pack();
