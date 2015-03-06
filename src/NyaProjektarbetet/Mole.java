@@ -38,7 +38,7 @@ public class Mole extends JButton implements ActionListener {
     * Creates a mole-button and starts a timer.
     * 
     * @param label    a String which contains a number
-    * @param miniGame    
+    * @param miniGame   
     */
     public Mole(String label, MiniGame miniGame) {
     	super(label);

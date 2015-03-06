@@ -26,7 +26,7 @@ import javax.swing.JTextArea;
  * The MiniGame class creates a frame and most of its graphics.
  * This class contains an instance of the Player class.
  * <p>
- * 
+ * It implements ActionListener, MouseListener
  * 
  * @author  Linda Karlsson
  * @version 2015-03-05
