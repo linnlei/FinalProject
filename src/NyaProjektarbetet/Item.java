@@ -6,7 +6,7 @@ import java.io.Serializable;
  * The Item class represents the item in the game, with information such as
  * the item's picture, price, level, and name.
  * 
- * @author ???
+ * @author Linn Leiulfsrud
  * @version 2015-03-05
  */
 public class Item implements Serializable{
@@ -22,7 +22,7 @@ public class Item implements Serializable{
 	*
 	* @param  	price		The item's price
 	* @param  	level		The item's level	  
-	* @param  	pictureFile		The filename of the item's picture
+	* @param  	pictureFile	The filename of the item's picture
 	* @param  	name		The item's name            
 	*/
 	public Item(int price, int level, String pictureFile, String name){

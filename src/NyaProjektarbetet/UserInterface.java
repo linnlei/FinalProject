@@ -16,15 +16,11 @@ import java.util.Observer;
 
 import javax.swing.*;
 
-//Ang. Authors så tror jag att det är Fifi och jag som arbetat mest på den här klassen? Eller? Vad tror ni?
-//Det är väl Fifi som gjort största delen av Start game-metoderna, samt fixat till JPanelWithBackground-funktionerna
-//Och jag har jobbat mest med menyerna och layouten
-//Eller ska vi skriva alla fyra som authors istället? :) //Linn
 
 /**
  * The UserInterface class creates the base GUI: everything but the central panel.
  * 
- * @author Fifi Johansson, Linn Leiulfsrud
+ * @author ???
  * @version 2015-03-04
  */
 

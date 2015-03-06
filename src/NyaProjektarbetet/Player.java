@@ -9,7 +9,7 @@ import java.util.Observable;
  * (In gameplay, the inventory can be said to "belong" to the player, but class-wise 
  * the inventory object is not created in the player object.)
  * 
- * @author ???
+ * @author Linn Leiulfsrud
  * @version 2015-03-05
  */
 public class Player extends Observable implements Serializable {

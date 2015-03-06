@@ -6,7 +6,11 @@ import java.awt.*;
 
 /**
 * The JPanelWithBackground class adds a scaled background to a panel. Can use the setLayout(null)
-* and add-methods to add visible/invisible buttons onto the picture.            
+* and add-methods to add visible/invisible buttons onto the picture. 
+* 
+* 
+* @author Fifi Johansson
+* @version 2015-03-05
 */
 
 public class JPanelWithBackground extends JPanel {

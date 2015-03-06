@@ -8,7 +8,6 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -21,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
@@ -83,7 +83,7 @@ public class MiniGame implements ActionListener, MouseListener {
     	window.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
             	Sound.stopSound();
-            	Sound.soundInLoop("Start.wav");
+            	//Sound.soundInLoop("Start.wav");
             }
         });
     	
@@ -136,12 +136,19 @@ public class MiniGame implements ActionListener, MouseListener {
 	    	startMoleGame();
 		}
 		else if (e.getSource() == closeB){
-			Sound.stopSound();
-			Sound.soundInLoop("Start.wav");
 			if( miniGameActions.getScore() > 0 ){
 				player.changeMoney(miniGameActions.getScore());
+				JOptionPane.showMessageDialog( null, "Du vann " + miniGameActions.getScore() + 
+						" kr!" ,"Poäng", JOptionPane.OK_CANCEL_OPTION); 
+			}
+			if(miniGameActions.getScore() >= 100){
+				player.levelUp();
+				JOptionPane.showMessageDialog( null, "Du har levlat upp!\n" + "Du är nu level: " +
+						player.getLevel(),"Level up!",JOptionPane.OK_CANCEL_OPTION); 
 			}
 			window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));	
+			Sound.stopSound();
+			Sound.soundInLoop("Start.wav");
 		}
 		else if (e.getSource() == instructB)
 		{

@@ -67,7 +67,7 @@ public class RoomPanels implements Observer{
 		
 	}
 	/**
-	* getPanel - Creates and returns the right panel for the right room.
+	* getPanel - Creates and returns the correct panel for the current room.
 	*
 	* @param  	current 	String representation of the the current room.
 	* 	 
@@ -83,7 +83,7 @@ public class RoomPanels implements Observer{
 	}
 	
 	/**
-	* createCenterPanel - Creates the graphic panel for the central room.
+	* createCenterPanel - Creates the panel for the central room.
 	* 	 
 	* @return			A JPanel for the center.                
 	*/
@@ -171,7 +171,7 @@ public class RoomPanels implements Observer{
 	
 
 	/**
-	* createShopPanel - Creates the graphic panel for the shop.
+	* createShopPanel - Creates the panel for the shop.
 	* 	 
 	* @return			A JPanel for the shop.                
 	*/
@@ -328,7 +328,7 @@ public class RoomPanels implements Observer{
 	}
 	
 	/**
-	* createGardenPanel - creates the graphic panel for the garden.
+	* createGardenPanel - creates the panel for the garden.
 	* 	 
 	* @return			  A JPanel for the garden.                
 	*/
@@ -487,9 +487,8 @@ public class RoomPanels implements Observer{
 	}
 	
 	/**
-	* createInventoryPanel - creates the graphic panel for inventory.
-	* 	 
-	* @return              
+	* createInventoryPanel - creates the window for the inventory.
+	* 	          
 	*/
 	public void createInventoryPanel()
 	{

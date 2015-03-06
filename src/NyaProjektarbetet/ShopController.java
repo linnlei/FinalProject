@@ -20,18 +20,18 @@ public class ShopController {
 	 * that the current shop can be reached.
 	 * Is the controller part of the MVC design involving Shop, RoomPanels, and ShopController.
 	 * 
-	 * @param	engine	the game engine of the current game
+	 * @param	engine	The game engine.
 	 */
     ShopController(GameEngine engine) {
         this.engine  = engine;	
     }
     
 	/**
-	* buyControl - checks the isInteger method to see if the entered value is valid, then
+	* buyControl - Checks the isInteger method to see if the entered value is valid, then
 	* asks the player to confirm the purchase. Calls the money control.
 	*
-	* @param  	value			amount to buy: a string entered by the player
-	* @param  	clickedItem		the item that the player selected	              
+	* @param  	value			Amount to buy: a string entered by the player.
+	* @param  	clickedItem		The item that the player selected.	              
 	*/
     public void buyConfirm(String value, String clickedItem){
 	
@@ -54,11 +54,11 @@ public class ShopController {
     }
     
 	/**
-	* buyControl - finds the right item in the shop, checks so the player level is high enough, and
+	* buyControl - Finds the right item in the shop, checks so the player level is high enough, and
 	* calls the buying methods in shop if the level is high enough.
 	*
-	* @param  	value			amount to buy: a string entered by the player
-	* @param  	clickedItem		the item that the player selected	              
+	* @param  	value			Amount to buy: a string entered by the player.
+	* @param  	clickedItem		The item that the player selected.	              
 	*/
     public void buyControl(String value, String clickedItem){
     	
@@ -76,10 +76,11 @@ public class ShopController {
     }
   
 	/**
-	* isInteger - checks if the entered string is a valid integer, and that it's positive
+	* isInteger - Checks if the entered string is a valid integer, and that it's 
+	* a positive number.
 	*
-	* @param  	s		the value that the player entered
-	* @return			true if the string was a positive integer, false otherwise	              
+	* @param  	s		The value that the player entered.
+	* @return			True if the string was a positive integer, false otherwise.	              
 	*/
 	public static boolean isInteger(String s) {	
 	    try { 
@@ -93,6 +94,13 @@ public class ShopController {
 	    	return false;
 	}
 	
+	/**
+	* levelControl - Checks if the player level is equal to or higher than
+	* the item level of given item.
+	*
+	* @param  	item		The item to check the level of.
+	* @return				True if the player level is >= the item level.	            
+	*/
 	public boolean levelControl(Item item){
 		if(engine.getPlayer().getLevel() >= item.getItemLevel()){
 			return true;
