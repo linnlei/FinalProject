@@ -4,20 +4,43 @@ import java.util.HashMap;
 import java.util.Observable;
 
 
-
+/**
+ * The Inventory class holds the inventory, which consists of all the items
+ * in the game and a number representing how many of that item the player has
+ * in their backpack.
+ * 
+ * @author Fifi Johansson
+ * @version 2015-03-05
+ */
 public class Inventory extends Observable implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private HashMap<Item, Integer> items;
 	
+	/**
+	* Constructor of class Inventory. Creates a hashmap and fills it
+	* with the items of the game.	              
+	*/
 	public Inventory() {
 		items = new HashMap<Item, Integer>();
 		createInventory();
 	}
 	
+	/**
+	* getInventory - Gets the inventory of the current game
+	*
+	* @return	items		The hashmap of items		              
+	*/
 	public HashMap<Item, Integer> getInventory() {
 		return items;
 	}
 	
+	/**
+	* updateInventory - Adds or removes items from the inventory by
+	* changing the amount of the item the player owns.
+	*
+	* @param  	item		The item to change amount of
+	* @param  	amount		How many to add/remove	              
+	*/
 	public void updateInventory(Item item, Integer amount) {
 		int total = (items.get(item)) + amount;
 		items.put(item, total);
@@ -25,6 +48,9 @@ public class Inventory extends Observable implements Serializable {
 		notifyObservers(item);
 	}
 	
+	/**
+	* createInventory - Creates new items and puts them in the inventory hashmap            
+	*/
 	private void createInventory(){
 		Item blueBrick = new Item(10, 1, "BrickBlue.png", "Blå tegelsten");
 		Item redBrick = new Item(20, 1, "BrickRed.png", "Röd tegelsten");
